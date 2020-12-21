@@ -16,12 +16,29 @@ export class MenuService {
     public commonMenu = [
         {
             "name": "首页",
-            "url": "/content/home/dashboard",
+            "url": "/content/home",
             "icon": "home",
             "isOpen": true,
             "hidden": false,
             "id": "1",
             "child": []
+        },
+        {
+            "name": "内容管理",
+            "url": "/content/article",
+            "icon": "appstore",
+            "isOpen": true,
+            "hidden": false,
+            "id": "2",
+            "child": [
+                {
+                    "name": "文章列表",
+                    "url": "/content/article/list",
+                    "isOpen": false,
+                    "hidden": false,
+                    "id": "3"
+                }
+            ]
         }
     ]
     public setUserMenuAll(data: Array<number>):Array<object> {

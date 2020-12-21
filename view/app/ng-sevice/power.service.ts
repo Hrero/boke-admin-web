@@ -18,12 +18,8 @@ export class PowerService {
 
     public getViewApiUrl({urlKey, power}: paramsInterface):any {
         const urlList =  {
-            synDing: '/org/user/synDing', // 同步钉钉
-            deptList: '/org/dept/list', // 获取部门
-            deptListByPower: '/org/dept/listJurisdiction', // 获取部门（公海、私海列表的筛选框（根据权限获取））
-            userCurrent: '/org/user/current', // 当前用户
-            userJurisdiction: '/org/user/jurisdiction', // 当前用户的管理部门
-            orgDeptUsers: '/org/dept/users' // 当前用户的管理部门
+            getArticleList: '/article/getArticleList', // 文章列表
+            addOrUpdate: '/article/addOrUpdate', // 增加文章
         }
         return Object.assign(urlList)[urlKey]
     }

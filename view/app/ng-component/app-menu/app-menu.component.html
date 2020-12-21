@@ -12,7 +12,7 @@
                     nzMatchRouter
                     [hidden]= "child.hidden"
                     *ngFor="let child of item.child">
-                    <a routerLink="">
+                    <a routerLink="{{ item.url }}">
                         <span>{{child.name}}</span>
                     </a>
                 </li>
@@ -22,7 +22,7 @@
             nzMatchRouter
             [hidden]= "item.hidden"
             *ngIf="!item.child || !item.child.length">
-            <a routerLink="">
+            <a routerLink="{{ item.url }}">
                 <i nz-icon [nzType]="item.icon"></i>
                 <span>{{item.name}}</span>
             </a>

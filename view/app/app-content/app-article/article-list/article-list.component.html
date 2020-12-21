@@ -1,0 +1,61 @@
+<div class="pagesWrap">
+    <div class="page-nav">
+        <nz-breadcrumb>
+            <nz-breadcrumb-item>内容管理</nz-breadcrumb-item>
+            <nz-breadcrumb-item>文章列表</nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </div>
+    <div class="page-content">
+        <div class="page-table-opr">
+            <div>
+                <button nz-button nzType="primary" (click)="createArticle()">创建文章</button>
+            </div>
+        </div>
+        <div class="page-part">
+            <nz-table
+                    #rowSelectionTable
+                    nzShowSizeChanger
+                    nzShowPagination
+                    [nzScroll]="{ 'x': '1000px' }"
+                    [nzFrontPagination]="false"
+                    [nzData]="listOfData"
+                    [nzLoading]="loading"
+                    [nzTotal]="total"
+                    [(nzPageIndex)]="pageNum"
+                    [(nzPageSize)]="pageSize"
+                    (nzPageIndexChange)="getPageInfo()"
+                    (nzPageSizeChange)="getPageInfo(true)">
+                <thead>
+                <tr>
+                    <th nzAlign="center" class="text-inline">文章id</th>
+                    <th nzAlign="center" class="text-inline">文章名</th>
+                    <th nzAlign="center" class="text-inline">文章描述</th>
+                    <th nzAlign="center" class="text-inline">是否置顶</th>
+                    <th nzAlign="center" class="text-inline">文章访问量</th>
+                    <th nzAlign="center" class="text-inline">文章内容</th>
+                    <th nzAlign="center" class="text-inline">文章分类</th>
+                    <th nzAlign="center" class="text-inline">创建时间</th>
+                    <th nzAlign="center" class="text-inline">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-template ngFor let-data [ngForOf]="rowSelectionTable.data">
+                    <tr>
+                        <td nzAlign="center">{{ data.id }}</td>
+                        <td nzAlign="center">{{ data.title || '-' }}</td>
+                        <td nzAlign="center">{{ data.summary || '-' }}</td>
+                        <td nzAlign="center">{{ data.isTop === 1? '是': '否' }}</td>
+                        <td nzAlign="center">{{ data.traffic || '-'}}</td>
+                        <td nzAlign="center">{{ data.content || '-' }}</td>
+                        <td nzAlign="center">{{ data.sortId | sort }}</td>
+                        <td nzAlign="center">{{ data.gmtCreated | date: 'yyyy.MM.dd' }}</td>
+                        <td nzAlign="center">
+                            <a href="javascript:void(0)" class="blueColor" (click)="createArticle(data)">编辑</a>
+                        </td>
+                    </tr>
+                </ng-template>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

@@ -4,10 +4,10 @@
 
 export const environment = {
     production: false,
-    url: 'http://127.0.0.1:4106',
-    uploadUrl: 'http://127.0.0.1:4106/api/upload',
-    uploadExcel: 'http://127.0.0.1:4106/api/excel',
-    weChatBack: 'http://127.0.0.1:4106/wechat'
+    url: 'http://127.0.0.1:8002',
+    uploadUrl: 'http://127.0.0.1:8002/api/upload',
+    uploadExcel: 'http://127.0.0.1:8002/api/excel',
+    weChatBack: 'http://127.0.0.1:8002/wechat'
 };
 
 /*

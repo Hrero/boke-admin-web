@@ -2,21 +2,21 @@
     <div *ngFor="let item of formsCtrl;"  [style.display]="!item.hidden ? 'block' : 'none'">
         <ng-container [ngSwitch]="item.type">
             <nz-form-item *ngSwitchCase="'show'">
-                <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key" [nzRequired]="item.required"></nz-form-label>
+                <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key" [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <input nz-input [(ngModel)]="validateForm.value[item.key]" [ngModelOptions]="{standalone: true}" [disabled]="true"/>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'area'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <textarea [rows]="item.areaRow || '4'" nz-input [formControlName]="item.key" [placeholder]="item.placeholder || ('请输入' + item.label)"></textarea>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'radio'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <nz-radio-group [formControlName]="item.key">
                         <label *ngFor="let item of item.optionList" nz-radio [nzValue]="item.value"></label>
@@ -25,14 +25,14 @@
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'text'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <input nz-input [formControlName]="item.key" [placeholder]="item.placeholder || ('请输入' + item.label) "/>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'number'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <nz-input-number [formControlName]="item.key"
                                      [nzMin]="item.min || 0"
@@ -43,7 +43,7 @@
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'date'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <nz-date-picker [formControlName]="item.key"
                                     [nzFormat]="item.format === 'long' ? 'yyyy-MM-dd hh:mm:ss' : item.format"></nz-date-picker>
@@ -51,7 +51,7 @@
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'select'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <nz-select [formControlName]="item.key"
                                (nzOpenChange)="getSelectData($event, item)"
@@ -68,7 +68,7 @@
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'cascader'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="18" [nzXs]="24" nzHasFeedback>
                     <nz-cascader
                         nzAllowClear
@@ -80,7 +80,7 @@
             </nz-form-item>
             <nz-form-item *ngSwitchCase="'file'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
-                               [nzRequired]="item.required"></nz-form-label>
+                               [nzRequired]="item.required">{{ item.label }}</nz-form-label>
                 <nz-form-control [nzSm]="14" [nzXs]="24">
                     <ng-container *ngIf="item.dataType === 'sign'">
                             <input nz-input [formControlName]="item.key"/>

@@ -91,6 +91,9 @@ import { DashboardComponent } from './app-home/dashboard/dashboard.component';
 import { PowerService } from '../ng-sevice/power.service';
 import { MenuService } from '../ng-sevice/menu.service';
 import { JurisdictionService } from '../ng-sevice/jurisdiction.service';
+import { AppArticleComponent } from './app-article/app-article.component';
+import { ArticleListComponent } from './app-article/article-list/article-list.component';
+import { SortPipe } from './app-pipe/sort.pipe';
 
 const routes: Routes = [
     {
@@ -101,6 +104,12 @@ const routes: Routes = [
                     { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
                     { path: 'dashboard', component: DashboardComponent }
                 ]
+            },
+            {
+                path: 'article', component: AppArticleComponent, children: [
+                    { path: '', redirectTo: 'list', pathMatch: 'prefix' },
+                    { path: 'list', component: ArticleListComponent }
+                ]
             }
         ]
     }
@@ -108,7 +117,7 @@ const routes: Routes = [
 @NgModule({
     declarations: [AppHomeComponent, 
         AppContentComponent, 
-        DashboardComponent
+        DashboardComponent, AppArticleComponent, ArticleListComponent, SortPipe
     ],
     imports: [
         ...nzArrList,
