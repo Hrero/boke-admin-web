@@ -45,8 +45,8 @@
                         <td nzAlign="center">{{ data.title || '-' }}</td>
                         <td nzAlign="center">{{ data.summary || '-' }}</td>
                         <td nzAlign="center">{{ data.isTop === 1? '是': '否' }}</td>
-                        <td nzAlign="center">{{ data.traffic || '-'}}</td>
-                        <td nzAlign="center">{{ data.content || '-' }}</td>
+                        <td nzAlign="center">{{ data.traffic | htmlStr }}</td>
+                        <td nzAlign="center">{{ '点击详情' || '-' }}</td>
                         <td nzAlign="center">{{ data.sortId | sort }}</td>
                         <td nzAlign="center">{{ data.gmtCreated | date: 'yyyy.MM.dd' }}</td>
                         <td nzAlign="center">

@@ -94,6 +94,9 @@ import { JurisdictionService } from '../ng-sevice/jurisdiction.service';
 import { AppArticleComponent } from './app-article/app-article.component';
 import { ArticleListComponent } from './app-article/article-list/article-list.component';
 import { SortPipe } from './app-pipe/sort.pipe';
+import { HtmlStrPipe } from './app-pipe/html-str.pipe';
+import { CreateArticleComponent } from './app-article/create-article/create-article.component';
+import { LMarkdownEditorModule } from './../../public_api';
 
 const routes: Routes = [
     {
@@ -117,7 +120,7 @@ const routes: Routes = [
 @NgModule({
     declarations: [AppHomeComponent, 
         AppContentComponent, 
-        DashboardComponent, AppArticleComponent, ArticleListComponent, SortPipe
+        DashboardComponent, AppArticleComponent, ArticleListComponent, SortPipe, HtmlStrPipe, CreateArticleComponent
     ],
     imports: [
         ...nzArrList,
@@ -125,6 +128,7 @@ const routes: Routes = [
         ReactiveFormsModule,
         RouterModule.forChild(routes),
         CommonModule,
+        LMarkdownEditorModule,
         ZglCommonModule
     ],
     providers: [PowerService, MenuService, JurisdictionService,

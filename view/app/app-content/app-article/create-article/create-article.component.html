@@ -1,0 +1,114 @@
+<form  nz-form [formGroup]="formData" class="formClass">
+    <div nz-row nzJustify="space-around" >
+        <nz-form-item nz-col [nzSpan]="8">
+            <nz-form-label nzRequired >文章名称</nz-form-label>
+            <nz-form-control nzHasFeedback >
+                <input nz-input id="title" formControlName="title" placeholder="请输入文章名" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col [nzSpan]="3">
+            <nz-form-label nzRequired>是否置顶</nz-form-label>
+            <nz-form-control nzHasFeedback>
+                <nz-select formControlName="isTop"
+                            nzPlaceHolder="请选择是否置顶"
+                            nzShowSearch
+                            nzAllowClear>
+                    <nz-option [nzValue]=0 nzLabel="否"></nz-option>
+                    <nz-option [nzValue]=1 nzLabel="是"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col [nzSpan]="3">
+            <nz-form-label nzRequired>分类</nz-form-label>
+            <nz-form-control nzHasFeedback>
+                <nz-select formControlName="sortId"
+                            nzPlaceHolder="请选择分类"
+                            nzShowSearch
+                            nzAllowClear>
+                    <nz-option [nzValue]=1 nzLabel="开发者手册"></nz-option>
+                    <nz-option [nzValue]=2 nzLabel="JAVA"></nz-option>
+                    <nz-option [nzValue]=3 nzLabel="JS"></nz-option>
+                    <nz-option [nzValue]=4 nzLabel="音乐"></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col [nzSpan]="10">
+            <nz-form-label nzRequired >文章描述</nz-form-label>
+            <nz-form-control nzHasFeedback >
+                <input nz-input id="summary" formControlName="summary" placeholder="请输入文章名" />
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+    <div nz-row nzJustify="space-around" >
+        <nz-form-item nz-col [nzSpan]="8">
+            <nz-form-label nzRequired >head描述</nz-form-label>
+            <nz-form-control nzHasFeedback >
+                <input nz-input id="headDescription" formControlName="headDescription" placeholder="请输入描述名" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col [nzSpan]="8">
+            <nz-form-label nzRequired >head关键词</nz-form-label>
+            <nz-form-control nzHasFeedback >
+                <input nz-input id="headKeywords" formControlName="headKeywords" placeholder="请输入关键词" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col [nzSpan]="5">
+            <nz-form-label nzRequired >head头</nz-form-label>
+            <nz-form-control nzHasFeedback >
+                <input nz-input id="headTitle" formControlName="headTitle" placeholder="请输入头" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item nz-col [nzSpan]="3">
+            <nz-form-label nzRequired >作者</nz-form-label>
+            <nz-form-control nzHasFeedback >
+                <input nz-input id="author" formControlName="author" placeholder="请输入作者" />
+            </nz-form-control>
+        </nz-form-item>
+
+    </div>
+    <div class="text-center margin-top-lg">
+        <button class="margin-right-lg"
+                nz-button
+                [nzType]="'primary'"
+                (click)="onSubmit()">确定</button>
+        <button nz-button nzType="default" (click)="cancel($event)">取消</button>
+    </div>
+</form>
+<div style="margin: 20px">
+    <form novalidate #form="ngForm">
+        <!-- <input type="text" class="form-control" name="Test" [(ngModel)]="content"> -->
+        <md-editor #md="ngModel" name="Content" (onEditorLoaded)="onEditorLoaded($event)"
+        [preRender]="preRender" [postRender]="postRender"
+        (onPreviewDomChanged)="onPreviewDomChanged($event)"
+        [upload]="doUpload" [(ngModel)]="content" [mode]="mode" [options]="options" required maxlength="600" height="400px"></md-editor>
+    </form>
+    <!-- <div class="well well-sm">
+        <button class="btn btn-default btn-primary" (click)="handleMarkdown()">
+            锁定
+        </button>
+        
+        <button class="btn btn-default btn-primary" (click)="togglePreviewPanel()">
+        {{ options?.showPreviewPanel ? 'Hide' : 'Show' }} 预览
+        </button>
+        &nbsp;&nbsp;
+        <button class="btn btn-default btn-primary" (click)="changeMode()">改变模式 (Current: {{ mode }})</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-default btn-primary" (click)="togglePreviewClick()">
+        {{ options?.enablePreviewContentClick ? 'Disable' : 'Enable' }} 预览内容点击
+        </button>
+        &nbsp;&nbsp;
+        <button class="btn btn-default btn-primary" (click)="toggleResizeAble()">
+        {{ options?.resizable ? 'Disable' : 'Enable' }} 可调整大小
+        </button>
+    </div> -->
+    <br>
+    <div class="well well-sm">
+        <label class="control-label">NgModel:</label>
+        <textarea class="form-control" rows="10" readonly [value]="content"></textarea>
+    </div>
+    <!-- <div class="well well-sm">
+        <label class="control-label">Form validate:</label>
+        <p>Required: {{ md?.errors?.required }}</p>
+        <p>Maxlength: {{ md?.errors?.maxlength | json }}</p>
+    </div> -->
+</div>
