@@ -20,6 +20,7 @@ export class PowerService {
         const urlList =  {
             getArticleList: '/article/getArticleList', // 文章列表
             addOrUpdate: '/article/addOrUpdate', // 增加文章
+            getClassList: '/sort/getClassList' // 增加文章
         }
         return Object.assign(urlList)[urlKey]
     }

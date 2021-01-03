@@ -21,15 +21,12 @@
         <nz-form-item nz-col [nzSpan]="3">
             <nz-form-label nzRequired>分类</nz-form-label>
             <nz-form-control nzHasFeedback>
-                <nz-select formControlName="sortId"
-                            nzPlaceHolder="请选择分类"
-                            nzShowSearch
-                            nzAllowClear>
-                    <nz-option [nzValue]=1 nzLabel="开发者手册"></nz-option>
-                    <nz-option [nzValue]=2 nzLabel="JAVA"></nz-option>
-                    <nz-option [nzValue]=3 nzLabel="JS"></nz-option>
-                    <nz-option [nzValue]=4 nzLabel="音乐"></nz-option>
-                </nz-select>
+                    <nz-cascader
+                        nzAllowClear
+                        formControlName="sortId"
+                        nzPlaceHolder="请选择分类"
+                        [nzOptions]="cascaderOptionList"
+                    ></nz-cascader>
             </nz-form-control>
         </nz-form-item>
         <nz-form-item nz-col [nzSpan]="10">
@@ -64,7 +61,14 @@
                 <input nz-input id="author" formControlName="author" placeholder="请输入作者" />
             </nz-form-control>
         </nz-form-item>
-
+    </div>
+    <div nz-row nzJustify="space-around" >
+        <nz-form-item nz-col [nzSpan]="8">
+            <nz-form-label nzRequired >文章banner</nz-form-label>
+            <nz-form-control nzHasFeedback >
+                <input nz-input id="picture" formControlName="picture" placeholder="请输入连接" />
+            </nz-form-control>
+        </nz-form-item>
     </div>
     <div class="text-center margin-top-lg">
         <button class="margin-right-lg"

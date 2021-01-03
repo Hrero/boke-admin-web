@@ -3,9 +3,12 @@ import {
     FormArray, FormControl,
     FormBuilder, FormGroup, ValidationErrors, Validators
 } from '@angular/forms';
+import { HttpService } from '../../../ng-sevice/http.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PowerService } from '../../../ng-sevice/power.service';
 import { id_ID, NzMessageService, NzModalRef } from 'ng-zorro-antd';
 import { UploadResult, MdEditorOption } from './../../../../public_api';
+import { mathFloor, isEmpty } from 'zgl-utils-js';
 
 @Component({
     selector: 'app-create-article',
@@ -20,6 +23,60 @@ export class CreateArticleComponent implements OnInit {
     public mode: string = 'editor';
     public html: String;
     public that = this;
+    public cascaderOptionList = [];
+    public options1 = [
+        {
+          value: 'zhejiang',
+          label: 'Zhejiang',
+          children: [
+            {
+              value: 'hangzhou',
+              label: 'Hangzhou',
+              children: [
+                {
+                  value: 'xihu',
+                  label: 'West Lake',
+                  isLeaf: true
+                }
+              ]
+            },
+            {
+              value: 'ningbo',
+              label: 'Ningbo',
+              isLeaf: true
+            }
+          ]
+        },
+        {
+          value: 'jiangsu',
+          label: 'Jiangsu',
+          children: [
+            {
+              value: 'nanjing',
+              label: 'Nanjing',
+              children: [
+                {
+                  value: 'zhonghuamen',
+                  label: 'Zhong Hua Men',
+                  isLeaf: true
+                }
+              ]
+            }
+          ]
+        }
+      ];
+    public ARTICLE_BANNER_PICTURE = [
+        'https://static2.zugeliang.com/lease/img/ed1c0d80-4c52-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang.com/lease/img/fe333490-4c52-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang.com/lease/img/07c91fb0-4c53-11eb-942f-df0c36395158.png',
+        'https://static2.zugeliang.com/lease/img/0ff9d580-4c53-11eb-942f-df0c36395158.jpg',
+        'https://static2.zugeliang.com/lease/img/18ab2d00-4c53-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang.com/lease/img/200224a0-4c53-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang.com/lease/img/2db7f840-4c53-11eb-942f-df0c36395158.jpg',
+        'https://static2.zugeliang.com/lease/img/367a66c0-4c53-11eb-942f-df0c36395158.jpg',
+        'https://static2.zugeliang.com/lease/img/4f6fb6d0-4c53-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang.com/lease/img/575b2640-4c53-11eb-942f-df0c36395158.jpg'
+    ]
     public options: MdEditorOption = {
         showPreviewPanel: true,
         enablePreviewContentClick: false,
@@ -40,7 +97,9 @@ export class CreateArticleComponent implements OnInit {
     };
     constructor(
         private fb: FormBuilder,
+        private powerService: PowerService,
         private modal: NzModalRef,
+        private https: HttpService,
         private _domSanitizer: DomSanitizer
     ) { }
     onSubmit(): void {
@@ -49,6 +108,14 @@ export class CreateArticleComponent implements OnInit {
                 this.formData.controls[key].markAsDirty();
                 this.formData.controls[key].updateValueAndValidity();
             }
+        }
+        if (isEmpty(this.formData.value.picture)) {
+            this.formData.value.picture = this.ARTICLE_BANNER_PICTURE[mathFloor(10, 0)]
+        }
+        if (!isEmpty(this.formData.value.sortId)) {
+            
+        console.log(this.formData.value, 'this.formData.value');
+            this.formData.value.sortId = this.formData.value.sortId[0]
         }
         const postValue = {
             ...this.formData.value,
@@ -79,40 +146,45 @@ export class CreateArticleComponent implements OnInit {
         this.modal.destroy();
     }
     ngOnInit() {
-        // private String headTitle;
-        // private String headKeywords;
-        // private String headDescription;
-        // private String author;
+        this.https.$get(this.powerService.getViewApiUrl({
+            urlKey: 'getClassList'
+        }), 'ADMINAPISERVER',{}).subscribe(res => {
+            if (res.code === 0) {
+                this.cascaderOptionList = res.data
+            }
+        })
         this.content = this.params?.content || null;
         let vOlist: any = {
             title: [this.params?.title || ''],
             summary: [this.params?.summary || ''],
             isTop: [this.params?.isTop || 0],
             headTitle: [this.params?.headTitle || ''],
+            picture: [this.params?.picture || ''],
             headKeywords: [this.params?.headKeywords || ''],
             headDescription: [this.params?.headDescription || ''],
             author: [this.params?.author || ''],
             sortId: [this.params?.sortId || '']
         }
         this.formData = this.fb.group(vOlist);
-        // let contentArr = ['# Hello, Markdown Editor!'];
-        // contentArr.push('```javascript ');
-        // contentArr.push('function Test() {');
-        // contentArr.push('	console.log("Test");');
-        // contentArr.push('}');
-        // contentArr.push('```');
-        // contentArr.push(' Name | Type');
-        // contentArr.push(' ---- | ----');
-        // contentArr.push(' A | Test');
-        // contentArr.push('![](http://lon-yang.github.io/markdown-editor/favicon.ico)');
-        // contentArr.push('');
-        // contentArr.push('- [ ] Taks A');
-        // contentArr.push('- [x] Taks B');
-        // contentArr.push('- test');
-        // contentArr.push('');
-        // contentArr.push('[Link](https://www.google.com)');
-        // contentArr.push('');
-        // this.content = contentArr.join('\r\n');
+        let contentArr = ['# Hello, Markdown Editor!'];
+        contentArr.push('```javascript ');
+        contentArr.push('function Test() {');
+        contentArr.push('	console.log("Test");');
+        contentArr.push('}');
+        contentArr.push('```');
+        contentArr.push(' Name | Type');
+        contentArr.push(' ---- | ----');
+        contentArr.push(' A | Test');
+        contentArr.push('![](http://lon-yang.github.io/markdown-editor/favicon.ico)');
+        contentArr.push('');
+        contentArr.push('- [ ] Taks A');
+        contentArr.push('- [x] Taks B');
+        contentArr.push('- test');
+        contentArr.push('');
+        contentArr.push('[Link](https://www.google.com)');
+        contentArr.push('');
+        this.content = contentArr.join('\r\n');
+        // getClassList
     }
     doUpload(files: Array<File>): Promise<Array<UploadResult>> {
         return new Promise((resolve, reject) => {

@@ -34,7 +34,7 @@
         "rimraf": "^3.0.2",
         "rxjs": "^6.5.4",
         "uuid": "^8.3.0",
-        "zgl-utils-js": "^0.2.35"
+        "zgl-utils-js": "^0.2.38"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.901.3",
