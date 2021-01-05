@@ -9,21 +9,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(http__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(https__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
-/* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_nestjs_core__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6);
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(12);
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(32);
-/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(compression__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(26);
-/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_nestjs_platform_express__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_nestjs_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _app_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
+/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(11);
+/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(31);
+/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(compression__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(25);
+/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_nestjs_platform_express__WEBPACK_IMPORTED_MODULE_7__);
 ;
-
 
 
 
@@ -34,21 +31,21 @@ __webpack_require__.r(__webpack_exports__);
 function bootstrap() {
     return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
         console.log('开始启动环境 ====》', process.env.NODE_ENV);
-        const server = express__WEBPACK_IMPORTED_MODULE_6__();
-        const app = yield _nestjs_core__WEBPACK_IMPORTED_MODULE_4__.NestFactory.create(_app_module__WEBPACK_IMPORTED_MODULE_5__.AppModule, new _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_8__.ExpressAdapter(server));
-        app.use(compression__WEBPACK_IMPORTED_MODULE_7__());
-        app.useStaticAssets(path__WEBPACK_IMPORTED_MODULE_3__.resolve('./dist/angular'));
-        app.useStaticAssets(path__WEBPACK_IMPORTED_MODULE_3__.resolve('./upload'));
+        const server = express__WEBPACK_IMPORTED_MODULE_5__();
+        const app = yield _nestjs_core__WEBPACK_IMPORTED_MODULE_3__.NestFactory.create(_app_module__WEBPACK_IMPORTED_MODULE_4__.AppModule, new _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_7__.ExpressAdapter(server));
+        app.use(compression__WEBPACK_IMPORTED_MODULE_6__());
+        app.useStaticAssets(path__WEBPACK_IMPORTED_MODULE_2__.resolve('./dist/angular'));
+        app.useStaticAssets(path__WEBPACK_IMPORTED_MODULE_2__.resolve('./upload'));
         app.set('etag', false);
         app.enableCors();
         yield app.init();
         http__WEBPACK_IMPORTED_MODULE_1__.createServer(server).listen(8002);
-        if (process.env.NODE_ENV === 'production') {
-            https__WEBPACK_IMPORTED_MODULE_2__.createServer({
-            // key: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.key')),
-            // cert: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.crt')),
-            }, server).listen(8002);
-        }
+        // if (process.env.NODE_ENV === 'production') {
+        //     https.createServer({
+        //         // key: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.key')),
+        //         // cert: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.crt')),
+        //     }, server).listen(8002);
+        // }
     });
 }
 bootstrap();
@@ -70,22 +67,16 @@ module.exports = require("http");;
 /* 3 */
 /***/ ((module) => {
 
-module.exports = require("https");;
+module.exports = require("path");;
 
 /***/ }),
 /* 4 */
 /***/ ((module) => {
 
-module.exports = require("path");;
-
-/***/ }),
-/* 5 */
-/***/ ((module) => {
-
 module.exports = require("@nestjs/core");;
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -94,16 +85,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8);
+/* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
 /* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_nestjs_config__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
+/* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4);
 /* harmony import */ var _nestjs_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_nestjs_core__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _filter_not_found_exceptions_filter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9);
-/* harmony import */ var _common_common_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(10);
+/* harmony import */ var _filter_not_found_exceptions_filter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8);
+/* harmony import */ var _common_common_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
 ;
 
 
@@ -135,19 +126,19 @@ AppModule = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ ((module) => {
 
 module.exports = require("@nestjs/common");;
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ ((module) => {
 
 module.exports = require("@nestjs/config");;
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -156,9 +147,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_2__);
 ;
 
@@ -180,7 +171,7 @@ NotFoundExceptionFilter = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -189,19 +180,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _controller_api_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
-/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
-/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(26);
+/* harmony import */ var _controller_api_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(10);
+/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
+/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(19);
+/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(25);
 /* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _service_message_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(19);
-/* harmony import */ var _service_format_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(27);
-/* harmony import */ var _controller_mock_mock_controller__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(29);
-/* harmony import */ var _controller_login_login_controller__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(30);
-/* harmony import */ var _controller_upload_upload_controller__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(31);
-/* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(8);
+/* harmony import */ var _service_message_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(18);
+/* harmony import */ var _service_format_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(26);
+/* harmony import */ var _controller_mock_mock_controller__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(28);
+/* harmony import */ var _controller_login_login_controller__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(29);
+/* harmony import */ var _controller_upload_upload_controller__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(30);
+/* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(7);
 /* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_nestjs_config__WEBPACK_IMPORTED_MODULE_11__);
 ;
 
@@ -250,7 +241,7 @@ CommonModule = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -259,16 +250,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
+/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
 /* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var _interceptor_zgl_api_interceptor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(24);
-/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(26);
+/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
+/* harmony import */ var _interceptor_zgl_api_interceptor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(23);
+/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(25);
 /* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_nestjs_platform_express__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(20);
-/* harmony import */ var _service_message_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(19);
+/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(19);
+/* harmony import */ var _service_message_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(18);
 var _a, _b, _c, _d, _e, _f, _g, _h, _j;
 
 
@@ -378,13 +369,13 @@ ApiController = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ ((module) => {
 
 module.exports = require("express");;
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -393,22 +384,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(rxjs__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var qiniu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15);
+/* harmony import */ var qiniu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(14);
 /* harmony import */ var qiniu__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(qiniu__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(16);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(15);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(17);
+/* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(16);
 /* harmony import */ var qs__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(qs__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(18);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(17);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(19);
-/* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(8);
+/* harmony import */ var _message_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(18);
+/* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(7);
 /* harmony import */ var _nestjs_config__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_nestjs_config__WEBPACK_IMPORTED_MODULE_9__);
 var _a, _b, _c;
 
@@ -608,37 +599,37 @@ ApiService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ ((module) => {
 
 module.exports = require("rxjs");;
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ ((module) => {
 
 module.exports = require("qiniu");;
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ ((module) => {
 
 module.exports = require("fs");;
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ ((module) => {
 
 module.exports = require("qs");;
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ ((module) => {
 
 module.exports = require("rxjs/operators");;
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -647,9 +638,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _read_write_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
+/* harmony import */ var _read_write_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19);
 var _a, _b;
 
 
@@ -727,7 +718,7 @@ MessageService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -736,15 +727,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(15);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(fs__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(path__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var node_xlsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(21);
+/* harmony import */ var node_xlsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
 /* harmony import */ var node_xlsx__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(node_xlsx__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var request__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(22);
+/* harmony import */ var request__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(21);
 /* harmony import */ var request__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(request__WEBPACK_IMPORTED_MODULE_5__);
 ;
 
@@ -804,7 +795,7 @@ let ReadWriteService = class ReadWriteService {
     }
     createExcel(fileName, data) {
         let address = path__WEBPACK_IMPORTED_MODULE_3__.resolve('./upload/' + fileName);
-        const result = __webpack_require__(23).execute({
+        const result = __webpack_require__(22).execute({
             stylesXmlFile: address,
             name: "mySheet",
             cols: data.cols,
@@ -841,25 +832,25 @@ ReadWriteService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ ((module) => {
 
 module.exports = require("node-xlsx");;
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ ((module) => {
 
 module.exports = require("request");;
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ ((module) => {
 
 module.exports = require("excel-export");;
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -868,11 +859,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(18);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(17);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var colors_console__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(25);
+/* harmony import */ var colors_console__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(24);
 /* harmony import */ var colors_console__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(colors_console__WEBPACK_IMPORTED_MODULE_3__);
 ;
 
@@ -910,19 +901,19 @@ ZglApiInterceptor = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ ((module) => {
 
 module.exports = require("colors-console");;
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ ((module) => {
 
 module.exports = require("@nestjs/platform-express");;
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -931,9 +922,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var zgl_utils_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(28);
+/* harmony import */ var zgl_utils_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
 /* harmony import */ var zgl_utils_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(zgl_utils_js__WEBPACK_IMPORTED_MODULE_2__);
 ;
 
@@ -1055,13 +1046,13 @@ FormatService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ ((module) => {
 
 module.exports = require("zgl-utils-js");;
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1070,9 +1061,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
+/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(19);
 var _a;
 
 
@@ -1136,7 +1127,7 @@ MockController = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1145,12 +1136,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
+/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
 /* harmony import */ var express__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
+/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
+/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(19);
 var _a, _b, _c, _d;
 
 
@@ -1198,7 +1189,7 @@ LoginController = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1207,12 +1198,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tslib__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6);
 /* harmony import */ var _nestjs_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nestjs_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26);
+/* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(25);
 /* harmony import */ var _nestjs_platform_express__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_nestjs_platform_express__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(13);
-/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
+/* harmony import */ var _service_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(12);
+/* harmony import */ var _service_read_write_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(19);
 var _a, _b;
 
 
@@ -1297,7 +1288,7 @@ UploadController = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ ((module) => {
 
 module.exports = require("compression");;

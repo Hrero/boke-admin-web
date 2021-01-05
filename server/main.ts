@@ -20,12 +20,12 @@ async function bootstrap() {
     app.enableCors();
     await app.init();
     http.createServer(server).listen(8002);
-    if (process.env.NODE_ENV === 'production') {
-        https.createServer({
-            // key: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.key')),
-            // cert: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.crt')),
-        }, server).listen(8002);
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //     https.createServer({
+    //         // key: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.key')),
+    //         // cert: fs.readFileSync(path.resolve('./static/ssl/zugeliang.com.crt')),
+    //     }, server).listen(8002);
+    // }
 }
 
 bootstrap();
