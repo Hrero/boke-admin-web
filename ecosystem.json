@@ -9,7 +9,7 @@
             "user": "root",
             "host": "121.196.178.118",
             "ref": "origin/master",
-            "repo": "git@github.com:Hrero/boke-pc-web.git",
+            "repo": "git@github.com:Hrero/boke-admin-web.git",
             "path": "/home/node_service/boke-admin-web",
             "post-deploy": "cd /home/node-service/boke-admin-web/source && git pull && pwd && node -v && npm install --production && pm2 startOrRestart ecosystem.json",
             "env": {
