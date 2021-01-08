@@ -112,10 +112,13 @@ export class CreateArticleComponent implements OnInit {
         if (isEmpty(this.formData.value.picture)) {
             this.formData.value.picture = this.ARTICLE_BANNER_PICTURE[mathFloor(10, 0)]
         }
+        console.log( this.formData.value.sortId, this.formData.value.sortId.length,'this.formData.value');
         if (!isEmpty(this.formData.value.sortId)) {
-            
-        console.log(this.formData.value, 'this.formData.value');
-            // this.formData.value.sortId = this.formData.value.sortId[0]
+            if (typeof this.formData.value.sortId !== 'number') {
+                this.formData.value.sortId = this.formData.value.sortId[this.formData.value.sortId.length - 1]
+                
+            }
+            console.log( this.formData.value, 'this.formData.value');
         }
         const postValue = {
             ...this.formData.value,
@@ -166,24 +169,24 @@ export class CreateArticleComponent implements OnInit {
             sortId: [this.params?.sortId || '']
         }
         this.formData = this.fb.group(vOlist);
-        // let contentArr = ['# Hello, Markdown Editor!'];
-        // contentArr.push('```javascript ');
-        // contentArr.push('function Test() {');
-        // contentArr.push('	console.log("Test");');
-        // contentArr.push('}');
-        // contentArr.push('```');
-        // contentArr.push(' Name | Type');
-        // contentArr.push(' ---- | ----');
-        // contentArr.push(' A | Test');
-        // contentArr.push('![](http://lon-yang.github.io/markdown-editor/favicon.ico)');
-        // contentArr.push('');
-        // contentArr.push('- [ ] Taks A');
-        // contentArr.push('- [x] Taks B');
-        // contentArr.push('- test');
-        // contentArr.push('');
-        // contentArr.push('[Link](https://www.google.com)');
-        // contentArr.push('');
-        // this.content = contentArr.join('\r\n');
+        let contentArr = ['# Hello, Markdown Editor!'];
+        contentArr.push('```javascript ');
+        contentArr.push('function Test() {');
+        contentArr.push('	console.log("Test");');
+        contentArr.push('}');
+        contentArr.push('```');
+        contentArr.push(' Name | Type');
+        contentArr.push(' ---- | ----');
+        contentArr.push(' A | Test');
+        contentArr.push('![](http://lon-yang.github.io/markdown-editor/favicon.ico)');
+        contentArr.push('');
+        contentArr.push('- [ ] Taks A');
+        contentArr.push('- [x] Taks B');
+        contentArr.push('- test');
+        contentArr.push('');
+        contentArr.push('[Link](https://www.google.com)');
+        contentArr.push('');
+        this.content = contentArr.join('\r\n');
         // getClassList
     }
     doUpload(files: Array<File>): Promise<Array<UploadResult>> {
