@@ -18,6 +18,7 @@ async function bootstrap() {
     app.useStaticAssets(path.resolve('./upload'));
     app.set('etag', false);
     app.enableCors();
+
     await app.init();
     http.createServer(server).listen(8002);
     // if (process.env.NODE_ENV === 'production') {

@@ -37,12 +37,40 @@ export class ApiController {
 
     @Get('api/boss')
     async bossGet(@Req() request: Request) {
+        getClientIp(request)
+function getClientIp(req) {
+    var ipAddress;
+    var forwardedIpsStr = req.header('x-forwarded-for'); 
+    if (forwardedIpsStr) {
+        var forwardedIps = forwardedIpsStr.split(',');
+        ipAddress = forwardedIps[0];
+    }
+    if (!ipAddress) {
+        ipAddress = req.connection.remoteAddress;
+    }
+    console.log(req.connection.remoteAddress, ipAddress, forwardedIpsStr,'=======ip====');
+    return ipAddress.split(':ffff:')[1];
+};
         const res = await this.api.$get(request).toPromise();
         return res && res.data || res;
     }
 
     @Post('api/boss')
     async bossPost(@Body() postParams, @Req() request: Request) {
+        getClientIp(request)
+        function getClientIp(req) {
+            var ipAddress;
+            var forwardedIpsStr = req.header('x-forwarded-for'); 
+            if (forwardedIpsStr) {
+                var forwardedIps = forwardedIpsStr.split(',');
+                ipAddress = forwardedIps[0];
+            }
+            if (!ipAddress) {
+                ipAddress = req.connection.remoteAddress;
+            }
+            console.log(req.connection.remoteAddress, ipAddress, forwardedIpsStr,'=======ip====');
+            return ipAddress.split(':ffff:')[1];
+        };
         const res = await this.api.$post(request, postParams).toPromise();
         if (res && res.data && res.data.code === 0) {
             const reqUrl = request.header('X-Url') || request.header('X-Code');
