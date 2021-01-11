@@ -284,42 +284,12 @@ let ApiController = class ApiController {
     }
     bossGet(request) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
-            getClientIp(request);
-            function getClientIp(req) {
-                var ipAddress;
-                var forwardedIpsStr = req.header('x-forwarded-for');
-                if (forwardedIpsStr) {
-                    var forwardedIps = forwardedIpsStr.split(',');
-                    ipAddress = forwardedIps[0];
-                }
-                if (!ipAddress) {
-                    ipAddress = req.connection.remoteAddress;
-                }
-                console.log(req.connection.remoteAddress, ipAddress, forwardedIpsStr, '=======ip====');
-                return ipAddress.split(':ffff:')[1];
-            }
-            ;
             const res = yield this.api.$get(request).toPromise();
             return res && res.data || res;
         });
     }
     bossPost(postParams, request) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__awaiter)(this, void 0, void 0, function* () {
-            getClientIp(request);
-            function getClientIp(req) {
-                var ipAddress;
-                var forwardedIpsStr = req.header('x-forwarded-for');
-                if (forwardedIpsStr) {
-                    var forwardedIps = forwardedIpsStr.split(',');
-                    ipAddress = forwardedIps[0];
-                }
-                if (!ipAddress) {
-                    ipAddress = req.connection.remoteAddress;
-                }
-                console.log(req.connection.remoteAddress, ipAddress, forwardedIpsStr, '=======ip====');
-                return ipAddress.split(':ffff:')[1];
-            }
-            ;
             const res = yield this.api.$post(request, postParams).toPromise();
             if (res && res.data && res.data.code === 0) {
                 const reqUrl = request.header('X-Url') || request.header('X-Code');
