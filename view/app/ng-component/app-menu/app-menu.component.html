@@ -1,6 +1,7 @@
 <ul nz-menu nzMode="inline" style="width: 220px;">
     <!-- <app-logo-icon></app-logo-icon> -->
     <!-- <div>1</div> -->
+    
     <ng-container  *ngFor="let item of menuList">
         <li *ngIf="item.child && item.child.length"
             nz-submenu
