@@ -11,7 +11,7 @@
             "ref": "origin/master",
             "repo": "git@github.com:Hrero/boke-admin-web.git",
             "path": "/home/node-service/boke-admin-web",
-            "post-deploy": "cd /home/node-service/boke-admin-web/source && git pull --ff-only && pwd && node -v && npm install --production && pm2 startOrRestart ecosystem.json",
+            "post-deploy": "cd /home/node-service/boke-admin-web/source && git pull origin master --ff-only && pwd && node -v && npm install --production && pm2 startOrRestart ecosystem.json",
             "env": {
                 "NODE_ENV": "production"
             }
