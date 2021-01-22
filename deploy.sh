@@ -2,6 +2,6 @@
 
 node -v
 pwd
-npm install --production
+# npm install --production
 pm2 startOrRestart ecosystem.json
 
