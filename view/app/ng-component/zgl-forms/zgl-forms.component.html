@@ -7,6 +7,7 @@
                     <input nz-input [(ngModel)]="validateForm.value[item.key]" [ngModelOptions]="{standalone: true}" [disabled]="true"/>
                 </nz-form-control>
             </nz-form-item>
+            
             <nz-form-item *ngSwitchCase="'area'">
                 <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="item.key"
                                [nzRequired]="item.required">{{ item.label }}</nz-form-label>
