@@ -77,6 +77,11 @@ export class CreateArticleComponent implements OnInit {
         'https://static2.zugeliang.com/lease/img/4f6fb6d0-4c53-11eb-ae90-614ce6e0f14d.jpg',
         'https://static2.zugeliang.com/lease/img/575b2640-4c53-11eb-942f-df0c36395158.jpg'
     ]
+
+    public arrPic = [
+        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F201503%2F29%2F20150329150104_KkuVB.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1614663091&t=e6159825c78ba3a65c1bb03d282a5f75',
+        'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=51997743,3299698720&fm=26&gp=0.jpg'
+    ]
     public options: MdEditorOption = {
         showPreviewPanel: true,
         enablePreviewContentClick: false,
@@ -162,7 +167,7 @@ export class CreateArticleComponent implements OnInit {
             summary: [this.params?.summary || ''],
             isTop: [this.params?.isTop || 0],
             headTitle: [this.params?.headTitle || ''],
-            picture: [this.params?.picture || ''],
+            picture: [this.params?.picture || this.arrPic[mathFloor(2, 0)]],
             headKeywords: [this.params?.headKeywords || ''],
             headDescription: [this.params?.headDescription || ''],
             author: [this.params?.author || ''],
