@@ -182,7 +182,7 @@ export class ApiService {
         fs.unlink(file.path, function () {});
         if (ret) {
             const resData = ret || {};
-            resData.fullUrl = 'https://static2.zugeliang.com/' + resData.key;
+            resData.fullUrl = 'https://static2.zugeliang01.com/' + resData.key;
             res = {
                 code: 0,
                 object: resData

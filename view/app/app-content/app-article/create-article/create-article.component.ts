@@ -66,16 +66,16 @@ export class CreateArticleComponent implements OnInit {
         }
       ];
     public ARTICLE_BANNER_PICTURE = [
-        'https://static2.zugeliang.com/lease/img/ed1c0d80-4c52-11eb-ae90-614ce6e0f14d.jpg',
-        'https://static2.zugeliang.com/lease/img/fe333490-4c52-11eb-ae90-614ce6e0f14d.jpg',
-        'https://static2.zugeliang.com/lease/img/07c91fb0-4c53-11eb-942f-df0c36395158.png',
-        'https://static2.zugeliang.com/lease/img/0ff9d580-4c53-11eb-942f-df0c36395158.jpg',
-        'https://static2.zugeliang.com/lease/img/18ab2d00-4c53-11eb-ae90-614ce6e0f14d.jpg',
-        'https://static2.zugeliang.com/lease/img/200224a0-4c53-11eb-ae90-614ce6e0f14d.jpg',
-        'https://static2.zugeliang.com/lease/img/2db7f840-4c53-11eb-942f-df0c36395158.jpg',
-        'https://static2.zugeliang.com/lease/img/367a66c0-4c53-11eb-942f-df0c36395158.jpg',
-        'https://static2.zugeliang.com/lease/img/4f6fb6d0-4c53-11eb-ae90-614ce6e0f14d.jpg',
-        'https://static2.zugeliang.com/lease/img/575b2640-4c53-11eb-942f-df0c36395158.jpg'
+        'https://static2.zugeliang01.com/lease/img/ed1c0d80-4c52-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang01.com/lease/img/fe333490-4c52-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang01.com/lease/img/07c91fb0-4c53-11eb-942f-df0c36395158.png',
+        'https://static2.zugeliang01.com/lease/img/0ff9d580-4c53-11eb-942f-df0c36395158.jpg',
+        'https://static2.zugeliang01.com/lease/img/18ab2d00-4c53-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang01.com/lease/img/200224a0-4c53-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang01.com/lease/img/2db7f840-4c53-11eb-942f-df0c36395158.jpg',
+        'https://static2.zugeliang01.com/lease/img/367a66c0-4c53-11eb-942f-df0c36395158.jpg',
+        'https://static2.zugeliang01.com/lease/img/4f6fb6d0-4c53-11eb-ae90-614ce6e0f14d.jpg',
+        'https://static2.zugeliang01.com/lease/img/575b2640-4c53-11eb-942f-df0c36395158.jpg'
     ]
 
     public arrPic = [
